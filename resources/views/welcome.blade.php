@@ -15,6 +15,7 @@
                     </div>
                     <div class="col-md-6 col-lg-5 col-xl-4 mt-5 mt-md-0">
                         <form id="form" class="form-group flex-wrap bg-white p-5 rounded-4 ms-md-5">
+                            @csrf
                             <h3 class="display-5">Check availability</h3>
                             <div class="col-lg-12 my-4">
                                 <label class="form-label text-uppercase">Check-In</label>
@@ -48,9 +49,17 @@
                                 <input type="number" value="1" name="quantity"
                                     class="form-control text-black-50 ps-3">
                             </div>
+                            <div class="col-lg-12 my-4">
+                                <label class="form-label text-uppercase">Payment</label>
+                                <select name="payment" class="form-control text-black-50 ps-3" id="">
+                                    <option value="ovo_xendit">OVO - Xendit</option>
+                                    <option value="qris_xendit">QRIS - Xendit</option>
+                                    <option value="mandiri_xendit">Mandiri - Xendit</option>
+                                </select>
+                            </div>
                             <div class="d-grid">
                                 <button href="#" class="btn btn-arrow btn-primary mt-3">
-                                    <span>Check availability<svg width="18" height="18">
+                                    <span>Book Now<svg width="18" height="18">
                                             <use xlink:href="#arrow-right"></use>
                                         </svg></span>
                                 </button>
