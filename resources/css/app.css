@@ -1,9 +1,6 @@
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-}
+@import './bootstrap.min.css';
+@import './vendor.css';
+@import url('https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
+@import url('https://unpkg.com/aos@2.3.1/dist/aos.css');
+@import './style.css';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap');
