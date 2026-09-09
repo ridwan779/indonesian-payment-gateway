@@ -437,135 +437,6 @@
                                 s = y.options[y.selectedIndex].value;
                             e.setHours(a, s, 0, 0), i.checkDateTimeConsistency(), i.printDateAndTime(p, e), i.closePicker(t, m, 500), (g.disabled = !0);
                         });
-                }),
-                (this.showDatePicker = function (t, e) {
-                    for (
-                        var a,
-                            i = this,
-                            r = "",
-                            o = e.getMonth(),
-                            c = e.getFullYear(),
-                            l = ["31", (c % 100 != 0 && c % 4 == 0) || c % 400 == 0 ? 29 : 28, "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"],
-                            h = new Date(c, o, 1),
-                            u = d(h),
-                            _ = new Date(c, o - 1, 1),
-                            p = new Date(c, o + 1, 1),
-                            m = this.get_Dates(),
-                            v = 0,
-                            f = u,
-                            y = l[_.getMonth()];
-                        f > 0;
-  
-                    )
-                        (v = y - (f - 1)), (a = this.getDayClassName(v, _, m)), (r += '<td class="prev-month '.concat(a, '">').concat(v, "</td>")), f--;
-                    for (v = 1; v <= l[o]; ) u > 6 && ((u = 0), (r += "</tr><tr>")), (a = this.getDayClassName(v, h, m)), (r += '<td class="'.concat(a, '">').concat(v, "</td>")), u++, v++;
-                    for (v = 1; u <= 6; u++, v++) (a = this.getDayClassName(v, p, m)), (r += '<td class="next-month '.concat(a, '">').concat(v, "</td>"));
-                    (t.innerHTML = '<table class="date">\n      <tr>\n        <th><a href="javascript:void(0);" class="prev-month">&laquo;</a></th>\n        <th colspan="5">\n          <span class="month" data-i18n="'
-                        .concat(s[o] + "_", '">')
-                        .concat(this.i18n[s[o] + "_"], "</span>\n          ")
-                        .concat(c, '\n        </th>\n        <th><a href="javascript:void(0);" class="next-month">&raquo;</a></th>\n      </tr>\n      <tr>\n        <td class="day-label" data-i18n="')
-                        .concat(n[0], '">')
-                        .concat(this.i18n[n[0]], '</td>\n        <td class="day-label" data-i18n="')
-                        .concat(n[1], '">')
-                        .concat(this.i18n[n[1]], '</td>\n        <td class="day-label" data-i18n="')
-                        .concat(n[2], '">')
-                        .concat(this.i18n[n[2]], '</td>\n        <td class="day-label" data-i18n="')
-                        .concat(n[3], '">')
-                        .concat(this.i18n[n[3]], '</td>\n        <td class="day-label" data-i18n="')
-                        .concat(n[4], '">')
-                        .concat(this.i18n[n[4]], '</td>\n        <td class="day-label" data-i18n="')
-                        .concat(n[5], '">')
-                        .concat(this.i18n[n[5]], '</td>\n        <td class="day-label" data-i18n="')
-                        .concat(n[6], '">')
-                        .concat(this.i18n[n[6]], "</td>\n      </tr>\n      <tr>\n        ")
-                        .concat(r, "\n      </tr>\n    </table>")),
-                        _.setDate(y);
-                    var g = t.querySelector(".prev-month");
-                    _ > this.first_date
-                        ? g.addEventListener("click", function () {
-                              return i.showDatePicker(t, _);
-                          })
-                        : g.classList.add("disabled");
-                    var b = t.querySelector(".next-month");
-                    this.last_date > p
-                        ? b.addEventListener("click", function () {
-                              return i.showDatePicker(t, p);
-                          })
-                        : b.classList.add("disabled"),
-                        this.addOnSelectEvent(t),
-                        (this.current_month = h),
-                        (this.prev_month = _),
-                        (this.next_month = p);
-                }),
-                (this.showTimePicker = function (t, e) {
-                    for (
-                        var a,
-                            i = [
-                                "00:00",
-                                "00:30",
-                                "01:00",
-                                "01:30",
-                                "02:00",
-                                "02:30",
-                                "03:00",
-                                "03:30",
-                                "04:00",
-                                "04:30",
-                                "05:00",
-                                "05:30",
-                                "06:00",
-                                "06:30",
-                                "07:00",
-                                "07:30",
-                                "08:00",
-                                "08:30",
-                                "09:00",
-                                "09:30",
-                                "10:00",
-                                "10:30",
-                                "11:00",
-                                "11:30",
-                                "12:00",
-                                "12:30",
-                                "13:00",
-                                "13:30",
-                                "14:00",
-                                "14:30",
-                                "15:00",
-                                "15:30",
-                                "16:00",
-                                "16:30",
-                                "17:00",
-                                "17:30",
-                                "18:00",
-                                "18:30",
-                                "19:00",
-                                "19:30",
-                                "20:00",
-                                "20:30",
-                                "21:00",
-                                "21:30",
-                                "22:00",
-                                "22:30",
-                                "23:00",
-                                "23:30",
-                            ],
-                            r = 0,
-                            o = "",
-                            c = 1;
-                        c < 9;
-                        c++
-                    ) {
-                        for (o += "<tr>", r *= 1; r < 6 * c; r++) i[r] ? ("", (a = this.getHourClassName(i[r], e)), (o += '<td class="'.concat(a, '">').concat(i[r], "</td>"))) : (o += '<td class="white-background disabled"></td>');
-                        o += "</tr>";
-                    }
-                    (t.innerHTML = '<table class="time">\n      <tr>\n        <th colspan="7">\n          '
-                        .concat(this.i18n[n[d(e)] + "_"], "\n          ")
-                        .concat(e.getDate(), '\n          <span class="month" data-i18n="')
-                        .concat(s[e.getMonth()] + "_", '">')
-                        .concat(this.i18n[s[e.getMonth()] + "_"], "</span>\n        </th>\n      </tr>\n      ")
-                        .concat(o, "\n    </table>")),
-                        this.addOnSelectEvent(t);
                 });
         }
         function a(t) {
@@ -576,13 +447,6 @@
                 s = e.last_date ? e.last_date : null,
                 r = void 0 !== e.first_day_no ? e.first_day_no : 0,
                 o = e.styles ? e.styles : {};
-            this.setStartPickerProps(t, a, i, s, r),
-                this.start_container.classList.add("datetime-container"),
-                this.start_container.insertAdjacentHTML("afterbegin", this.getHTML("start", "date", o)),
-                this.printDateAndTime(this.start_container, this.start_date),
-                (this.start_date_btn = this.start_container.querySelector("button.date.start")),
-                (this.start_picker = this.start_container.querySelector("div.picker")),
-                this.start_date_btn.addEventListener("click", this.onOpenPicker);
         }
         function i(t) {
             var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
@@ -592,15 +456,6 @@
                 s = e.last_date ? e.last_date : null,
                 r = void 0 !== e.first_day_no ? e.first_day_no : 0,
                 o = e.styles ? e.styles : {};
-            this.setStartPickerProps(t, a, i, s, r),
-                this.start_container.classList.add("datetime-container", "fix-float"),
-                this.start_container.insertAdjacentHTML("afterbegin", this.getHTML("start", "datetime", o)),
-                this.printDateAndTime(this.start_container, this.start_date),
-                (this.start_date_btn = this.start_container.querySelector("button.date.start")),
-                (this.start_time_btn = this.start_container.querySelector("button.time.start")),
-                (this.start_picker = this.start_container.querySelector("div.picker")),
-                this.start_date_btn.addEventListener("click", this.onOpenPicker),
-                this.start_time_btn.addEventListener("click", this.onOpenPicker);
         }
         function s(t, e) {
             var a = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {};
@@ -610,7 +465,6 @@
                 r = a.last_date ? a.last_date : null,
                 o = void 0 !== a.first_day_no ? a.first_day_no : 0,
                 c = a.styles ? a.styles : {};
-            this.setStartPickerProps(t, i, s, r, o);
             var d = a.end_date ? a.end_date : null;
             this.setEndPickerProps(e, d),
                 this.start_container.classList.add("datetime-container"),
@@ -638,7 +492,6 @@
                 r = a.last_date ? a.last_date : null,
                 o = void 0 !== a.first_day_no ? a.first_day_no : 0,
                 c = a.styles ? a.styles : {};
-            this.setStartPickerProps(t, i, s, r, o);
             var d = a.end_date ? a.end_date : null;
             this.setEndPickerProps(e, d),
                 this.start_container.classList.add("datetime-container", "fix-float"),

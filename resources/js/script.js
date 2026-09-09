@@ -1,5 +1,6 @@
 import Swiper from 'swiper/bundle';
 import AOS from 'aos';
+
 (function ($) {
   "use strict";
 
@@ -124,3 +125,4 @@ import AOS from 'aos';
     new DateTimePickerComponent.DatePicker('select-departure-date');
   });
 })(jQuery);
+
