@@ -5,10 +5,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\PaymentChannel;
+use App\Models\Transaction;
+
 use App\Helpers\Payment;
 
+use Carbon\Carbon;
 use Validator;
 use DB;
+use Str;
 
 class HomeController extends Controller
 {
@@ -34,15 +38,35 @@ class HomeController extends Controller
 
         $payment_channels = PaymentChannel::find($request->payment);
 
-        DB::beginTransaction();
-        try {
-
-            DB::commit();
-        } catch (\Throwable $th) {
-            //throw $th;
-            DB::rollBack();
-        }
+        $transaction = new Transaction;
+        $transaction->payment_channel_id = $request->payment;
+        $transaction->order_no = 'TRX-'.Str::random(10);
+        $transaction->name = strip_tags($request->name);
+        $transaction->price = $request->price;
+        $transaction->expired_at = Carbon::now()->addMinutes(30);
+        $transaction->save();
         
-        Payment::initial($request->all())->pay();
+        $payment = Payment::initial($transaction)->pay();
+
+        if (!$payment) {
+            return redirect()->back()->withErrors(['payment' => ['payment errors']]);
+        }
+
+        return redirect(route('home.payment.pending', [$transaction->order_no]));
     }
+
+    public function getPaymentPending($order_no)
+    {
+        $transaction = Transaction::where('order_no', $order_no)->firstOrFail();
+
+        if ($transaction->status == 'pending') {
+            return view('page.payment-pending');
+        } else if ($transaction->status == 'success') {
+            return view('page.payment-success');
+        } else {
+            
+        }
+
+    }
+
 }

@@ -9,7 +9,7 @@
                     <h2 class="display-1 fw-normal">Hotel mellow Your Gateway to Serenity.</h2>
                 </div>
                 <div class="col-md-6 col-lg-5 col-xl-4 mt-5 mt-md-0">
-                    <form id="form" method="POST" action="{{ route('home.payment') }}" class="form-group flex-wrap bg-white p-5 rounded-4 ms-md-5">
+                    <form id="form" method="POST" action="{{ route('home.payment.process') }}" class="form-group flex-wrap bg-white p-5 rounded-4 ms-md-5">
                         @csrf
                         <h3 class="display-5">Test Payment</h3>
                         <div class="col-lg-12 my-4">

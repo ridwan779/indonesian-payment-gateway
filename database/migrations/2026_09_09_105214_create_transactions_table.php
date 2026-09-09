@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('order_no')->unique();
             $table->string('name');
             $table->integer('price');
+            $table->string('account_number')->nullable();
             $table->string('provider_reference_number')->nullable();
+            $table->string('status')->default('pending');
+            $table->dateTime('expired_at');
+
             $table->timestamps();
 
             $table->foreign('payment_channel_id')->references('id')->on('payment_channels');

@@ -31,9 +31,9 @@ class PaymentChannelSeeder extends Seeder
                 'channel_code' => 'DANA'
             ],
             [
-                'name' => 'BCA VA - Xendit',
+                'name' => 'Mandiri VA - Xendit',
                 'provider' => 'xendit',
-                'channel_code' => 'BCA_VIRTUAL_ACCOUNT'
+                'channel_code' => 'MANDIRI_VIRTUAL_ACCOUNT'
             ],
         ]);
     }
