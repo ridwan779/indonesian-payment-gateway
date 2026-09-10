@@ -19,6 +19,7 @@
     "dependencies": {
         "aos": "^2.3.1",
         "iconify-icon": "^1.0.7",
+        "jquery": "^4.0.0",
         "swiper": "^14.2.0"
     }
 }
