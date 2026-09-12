@@ -50,7 +50,7 @@ class Payment {
             'request_amount' => (int) $transaction->price,
             'channel_properties' => [
                 'display_name' => $transaction->name,
-                'account_mobile_number' => $transaction->phone_number,
+                'account_mobile_number' => '+'.$transaction->phone,
                 'expires_at' => Carbon::parse($transaction->expired_at)->toIso8601String()
             ]
         ];

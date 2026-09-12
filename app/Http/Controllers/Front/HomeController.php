@@ -42,6 +42,7 @@ class HomeController extends Controller
         $transaction->payment_channel_id = $request->payment;
         $transaction->order_no = 'TRX-'.Str::random(10);
         $transaction->name = strip_tags($request->name);
+        $transaction->phone = $request->phone;
         $transaction->price = $request->price;
         $transaction->expired_at = Carbon::now()->addMinutes(30);
         $transaction->save();
@@ -60,11 +61,11 @@ class HomeController extends Controller
         $transaction = Transaction::where('order_no', $order_no)->firstOrFail();
 
         if ($transaction->status == 'pending') {
-            return view('page.payment-pending');
+            return view('page.payment-pending', compact('transaction'));
         } else if ($transaction->status == 'success') {
             return view('page.payment-success');
         } else {
-            
+            return view('page.payment-failed');
         }
 
     }

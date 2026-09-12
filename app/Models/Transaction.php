@@ -12,4 +12,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(PaymentChannel::class, 'payment_channel_id');
     }
+
+    public function is_payment_va()
+    {
+        return $this->payment_channel != null && $this->payment_channel->payment_method == 'va';
+    }
 }

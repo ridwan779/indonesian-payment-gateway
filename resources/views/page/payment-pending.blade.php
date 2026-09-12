@@ -16,19 +16,22 @@
             <div class="details-box">
                 <div class="detail-row">
                     <span class="detail-label">Payment Method</span>
-                    <span class="detail-value" id="display-method">BCA Virtual Account</span>
+                    <span class="detail-value" id="display-method">{{ $transaction->payment_channel->name ?? '-' }}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Total Amount</span>
-                    <span class="detail-value text-primary" style="color: var(--primary);">Rp 150.000</span>
+                    <span class="detail-value text-primary" style="color: var(--primary);">Rp {{ number_format($transaction->price, 0, ',', '.') }}</span>
                 </div>
-                
+                @if ($transaction->is_payment_va())
                 <div class="copy-wrapper">
                     <div>
                         <div class="detail-label" style="margin-bottom: 4px;">Virtual Account Number</div>
-                        <div class="va-number" id="va-number">8077 0987 6543 210</div>
+                        <div class="va-number" id="va-number">{{ $transaction->account_number }}</div>
                     </div>
                 </div>
+                @else
+                
+                @endif
             </div>
 
             <a href="{{ route('home.index') }}" class="btn btn-outline">Change Payment Method</a>
